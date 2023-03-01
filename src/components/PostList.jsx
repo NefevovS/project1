@@ -1,21 +1,16 @@
 import React from "react";
+import Post from "./Post";
+import "../App.css";
 
-const PostList = ({ remove, posts }) => {
+const PostList = ({ posts, removePost }) => {
   return (
     <div className="postList">
-      {posts.map((post) => {
-        return (
-          <div className="postItem" key={post.id}>
-            <div>
-              <strong>{post.title}</strong>
-              <div>{post.body}</div>
-            </div>
-            <div>
-              <button onClick={() => remove(post)}>Удалить</button>
-            </div>
-          </div>
-        );
-      })}
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
+        Список постов
+      </h1>
+      {posts.map((post, index) => (
+        <Post post={post} key={post.id} removePost={removePost} index={index} />
+      ))}
     </div>
   );
 };
